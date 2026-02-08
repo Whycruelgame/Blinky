@@ -1,4 +1,3 @@
-#define LED_PIN 5
 
 void delay (unsigned int count)
 {
@@ -9,6 +8,7 @@ void delay (unsigned int count)
     }
 }
 void GPIO_Init(void){
+  /*Values for memory can be found using Memory Map + Reference Manual.*/
   volatile unsigned int *RCC_APB2ENR = (volatile unsigned int *)0x40021018;
   //Enables GPIO Port A
   *RCC_APB2ENR |= (1 << 2);

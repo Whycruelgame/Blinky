@@ -1,7 +1,7 @@
-.syntax unified
+.syntax unified /*Can be found in reference manual for CPU Architechture (ARM cortex-m3)*/
 .cpu cortex-m3
 .thumb
-
+/*References from LD linker file.*/
 .word _sdata
 .word _edata
 
@@ -9,10 +9,10 @@
 .word _ebss
 
 .global vectors
-
+/*defines seciton for ISR vector table.*/
 .section .isr_vector,"a",%progbits
   .type vectors, %object
-  .size vectors, .-vectors  
+  .size vectors, .-vectors
 
 vectors:
   .word _estack
@@ -25,7 +25,7 @@ vectors:
 Reset_Handler:
   movs r1, #0
   b loop_copy_data
-
+/*Copies data from flash to ram. Also clears bss.*/
 copy_data:
   ldr r3, =_sidata
   ldr r3, [r3, r1]
